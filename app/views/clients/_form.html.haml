@@ -1,0 +1,33 @@
+= simple_form_for @master, defaults: {input_html: { class: "form-control" }} do |f|
+  .row
+    .col-md-12
+      .text-right
+        = render 'shared/masters/form_actions', f: f
+
+  = render 'shared/errors/messages', object: f.object
+
+  .form-inputs
+    .row
+      .col-md-6
+        = f.input :code, autofocus: true
+      .col-md-6
+        = f.input :name
+    .row
+      .col-md-6
+        = f.input :contact
+
+    %h4.form-section Photo
+    .row
+      .col-md-12
+        = f.input :photo, as: :file, label: false, input_html: { capture: "camera" }
+    .row
+      .col-md-12
+        = f.input :remote_photo_url, label: 'Or a URL to the photo'
+
+    %h4.form-section Notes
+    .row
+      .col-md-12
+        = f.input :notes, label: false
+
+  .form-actions
+    = render 'shared/masters/form_actions', f: f

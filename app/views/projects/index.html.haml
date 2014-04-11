@@ -1,0 +1,45 @@
+%h1.page-header
+  Projects
+  %small / Index
+.row
+  .col-md-12
+    .text-right
+      = new_link Project do
+        %button.btn.btn-success{type: "button"} New
+    .table-responsive
+      %table.table.table-striped
+        %thead
+          %tr
+            %th #
+            %th Division
+            %th Client
+            %th Code
+            %th Name
+            %th Start date
+            %th End date
+            %th Manager
+            %th.action-cell
+        %tbody
+          - @masters.each do |project|
+            %tr
+              %td= project.id
+              %td= project.division.name
+              %td= project.client.name
+              %td= project.code
+              %td= project.name
+              %td= project.start_date
+              %td= project.end_date
+              %td= project.manager_id
+              %td.action-cell
+                = show_link project do
+                  %span.btn-xs.btn-info
+                    %i.fa.fa-search
+                %span.spacer
+                = edit_link project do
+                  %span.btn-xs.btn-primary
+                    %i.fa.fa-pencil
+.row
+  .col-md-12.text-right
+    = paginate @masters
+
+

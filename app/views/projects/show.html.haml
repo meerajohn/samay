@@ -1,0 +1,29 @@
+%h1.page-header
+  Projects
+  %small / View
+.row
+  .col-md-12
+    .text-right
+      = render 'shared/masters/show_actions'
+
+    .row
+      .col-md-6
+        = display_field @master.division.name, label: 'Division'
+      .col-md-6
+        = display_field @master.client.name, label: 'Client'
+    .row
+      .col-md-6
+        = display_field @master.code, label: 'Code'
+      .col-md-6
+        = display_field @master.name, label: 'Name'
+    .row
+      .col-md-6
+        = display_field @master.start_date, label: 'Start_date'
+      .col-md-6
+        = display_field @master.end_date, label: 'End_date'
+    .row
+      .col-md-6
+        = display_field @master.manager_id, label: 'Manager'
+    .row
+      .col-md-12
+        = display_field @master.notes, label: 'Notes'

@@ -1,0 +1,36 @@
+%h1.page-header
+  Pipelines
+  %small / Index
+.row
+  .col-md-12
+    .text-right
+      = new_link Pipeline do
+        %button.btn.btn-success{type: "button"} New
+    .table-responsive
+      %table.table.table-striped
+        %thead
+          %tr
+            %th #
+            %th Project
+            %th Division
+            %th Employee
+            %th Reserved date
+            %th Status
+            %th.action-cell
+        %tbody
+          - @pipelines.each do |pipeline|
+            %tr
+              %td= pipeline.id
+              %td= pipeline.project.name
+              %td= pipeline.division.name
+              %td= pipeline.employee.name
+              %td= pipeline.reserved_date
+              %td= pipeline.status.titleize
+              %td.action-cell
+                = show_link pipeline do
+                  %span.btn-xs.btn-info
+                    %i.fa.fa-search
+                %span.spacer
+.row
+  .col-md-12.text-right
+    = paginate @pipelines

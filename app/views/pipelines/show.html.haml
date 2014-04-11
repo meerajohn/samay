@@ -1,0 +1,44 @@
+%h1.page-header
+  Pipelines
+  %small / View
+.row
+  .col-md-12
+    .text-right
+      - if @pipeline.reserved?
+        - if user_can? [:close], [@pipeline]
+          = link_to pipeline_close_path(@pipeline), method: :patch, data: { confirm: 'Are you sure?' } do
+            %button.btn.btn-danger{type: "button"} Close
+        - if user_can? [:cancel], [@pipeline]
+          = link_to pipeline_cancel_path(@pipeline), method: :patch, data: { confirm: 'Are you sure?' } do
+            %button.btn.btn-warning{type: "button"} Cancel
+        - if user_can? [:update], [@pipeline]
+          = link_to edit_pipeline_path(@pipeline) do
+            %button.btn.btn-primary{type: "button"} Edit
+      - if user_can? [:create], [@pipeline]
+        = link_to new_pipeline_path do
+          %button.btn.btn-success{type: "button"} New
+      - if user_can? [:read], [@pipeline]
+        = link_to @pipeline.class do
+          %button.btn.btn-default{type: "button"} Index
+
+    .row
+      .col-md-6
+        %h3
+          = "##{@pipeline.id}"
+          %small= "/ #{@pipeline.status.titleize}"
+    .row
+      .col-md-6
+        = display_field @pipeline.project.name, label: 'Project'
+      .col-md-6
+        = display_field @pipeline.division.name, label: 'Division'
+    .row
+      .col-md-6
+        = display_field @pipeline.employee.name, label: 'Employee'
+      .col-md-6
+        = display_field @pipeline.reserved_date, label: 'Reserved On'
+    .row
+      .col-md-6
+        = display_field @pipeline.status, label: 'Status'
+    .row
+      .col-md-12
+        = display_field @pipeline.notes, label: 'Notes'

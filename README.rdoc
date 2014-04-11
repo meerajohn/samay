@@ -1,0 +1,41 @@
+== About
+
+Samay is a simple TimeSheet Entry System built using Ruby on Rails.
+
+At this moment, the primary purpose is to use this project as a training ground in Samyukti.
+In future we may consider to develop this as a full-fledged application.
+
+== Installation
+
+* Install Ruby on Rails. Probably http://guides.railsgirls.com/install is an easy way to do it.
+
+* Clone this repository into your computer
+
+    cd ~
+    mkdir -p Code
+    cd Code
+    git clone https://github.com/meerajohn/samay.git Samay
+
+* Configure the PostgreSQL database
+
+    create user samay with encrypted password 'samay';
+    alter user samay createdb;
+    create database samay;
+    create database samay_dev;
+    create database samay_test;
+    alter database samay owner to samay;
+    alter database samay_dev owner to samay;
+    alter database samay_test owner to samay;
+
+* Install the dependencies
+
+    cd Samay
+    bundle install
+
+* (Re)Initialize the database
+
+    rake db:reset
+
+* Start the application in development mode
+
+    rails server

@@ -1,0 +1,13 @@
+.jumbotron
+  .container
+    %h1 Samay
+    %p A simple timesheet entry system
+.container
+  %h2 New Projects
+  - @projects.each_slice(4) do |row|
+    %hr
+    .row
+      - row.each do |project|
+        .col-md-3
+          %h3= project.name
+  %hr

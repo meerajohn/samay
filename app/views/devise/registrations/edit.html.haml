@@ -1,0 +1,30 @@
+%h1.page-header
+  My Profile
+  %small / Edit
+.row
+  .col-md-12
+    = simple_form_for @user, url: user_registration_path, defaults: {input_html: { class: "form-control" }}, html: { class: "horizontal-form" } do |f|
+      .row
+        .col-md-12
+          .text-right
+            = render 'shared/masters/form_actions', f: f
+
+      = render 'shared/errors/messages', object: f.object
+
+      .form-inputs
+        .row
+          .col-md-6
+            = f.input :name, autofocus: true
+          .col-md-6
+            = f.input :email
+        .row
+          .col-md-6
+            = f.input :password, autocomplete: "off", hint: "Leave it blank if you don't want to change it", required: false
+          .col-md-6
+            = f.input :password_confirmation, required: false
+        .row
+          .col-md-6
+            = f.input :current_password, hint: "We need your current password to confirm your changes", required: true
+
+      .form-actions
+        = render 'shared/masters/form_actions', f: f

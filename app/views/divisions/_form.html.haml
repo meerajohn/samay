@@ -1,0 +1,26 @@
+= simple_form_for @master, defaults: {input_html: { class: "form-control" }} do |f|
+  .row
+    .col-md-12
+      .text-right
+        = render 'shared/masters/form_actions', f: f
+
+  = render 'shared/errors/messages', object: f.object
+
+  .form-inputs
+    .row
+      .col-md-6
+        = f.input :parent_id, autofocus: true
+      .col-md-6
+        = f.input :code
+    .row
+      .col-md-6
+        = f.input :name,                                |
+          label: "Name",                                |
+          collection: Settings.division.names,          |
+          input_html: {class: "form-control selectize"} |
+    .row
+      .col-md-12
+        = f.input :notes
+
+  .form-actions
+    = render 'shared/masters/form_actions', f: f

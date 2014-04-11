@@ -1,0 +1,50 @@
+department:
+  names:
+    - Production Department
+    - Training programmes
+    - Marketing department
+    - Finance Department
+  kinds:
+    - Production and planning
+    - Purchasing department
+    - The stores department
+    - The design and technical support department
+    - The works department
+    - Recruitment and selection
+    - Training programmes
+    - Manpower Planning
+    - Dismissal and Redundancy
+    - Sales department
+    - Research & Department
+    - Promotion department
+    - Distribution department
+    - Book keeping procedures
+    - Preparing Final Accounts
+    - Providing management information
+    - Management of wages
+    - Raising Finance
+
+
+division:
+  names:
+    - Production and planning
+    - Purchasing department
+    - The stores department
+    - The design and technical support department
+    - The works department
+    - Recruitment and selection
+    - Training programmes
+    - Manpower Planning
+    - Dismissal and Redundancy
+    - Sales department
+    - Research & Department
+    - Promotion department
+    - Distribution department
+    - Book keeping procedures
+    - Preparing Final Accounts
+    - Providing management information
+    - Management of wages
+    - Raising Finance
+
+format:
+  date: 'yyyy-mm-dd'

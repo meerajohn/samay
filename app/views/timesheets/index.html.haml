@@ -1,0 +1,42 @@
+%h1.page-header
+  Timesheets
+  %small / Index
+.row
+  .col-md-12
+    .text-right
+      = new_link Timesheet do
+        %button.btn.btn-success{type: "button"} New
+    .table-responsive
+      %table.table.table-striped
+        %thead
+          %tr
+            %th #
+            %th Project
+            %th Division
+            %th Employee
+            %th Entry date
+            %th Entry period
+            %th Status
+            %th Activity
+            %th Hours
+            %th.action-cell
+        %tbody
+          - @timesheets.each do |timesheet|
+            %tr
+              %td= timesheet.id
+              %td= timesheet.project.name
+              %td= timesheet.division.name
+              %td= timesheet.employee.name
+              %td= timesheet.entry_date
+              %td= timesheet.entry_period
+              %td= timesheet.status.titleize
+              %td= timesheet.activity
+              %td= timesheet.hours
+              %td.action-cell
+                = link_to timesheet do
+                  %span.btn-xs.btn-info
+                    %i.fa.fa-search
+                  %span.spacer
+.row
+  .col-md-12.text-right
+    = paginate @timesheets

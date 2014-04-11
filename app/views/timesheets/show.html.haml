@@ -1,0 +1,49 @@
+%h1.page-header
+  Timesheets
+  %small / View
+.row
+  .col-md-12
+    .text-right
+      - if @timesheet.completed?
+        - if user_can? [:close], [@timesheet]
+          = link_to timesheet_close_path(@timesheet), method: :patch, data: { confirm: 'Are you sure?' } do
+            %button.btn.btn-danger{type: "button"} Close
+        - if user_can? [:cancel], [@timesheet]
+          = link_to timesheet_cancel_path(@timesheet), method: :patch, data: { confirm: 'Are you sure?' } do
+            %button.btn.btn-warning{type: "button"} Cancel
+        - if user_can? [:update], [@timesheet]
+          = link_to edit_timesheet_path(@timesheet) do
+            %button.btn.btn-primary{type: "button"} Edit
+      - if user_can? [:create], [@timesheet]
+        = link_to new_timesheet_path do
+          %button.btn.btn-success{type: "button"} New
+      - if user_can? [:read], [@timesheet]
+        = link_to @timesheet.class do
+          %button.btn.btn-default{type: "button"} Index
+
+    .row
+      .col-md-6
+        %h3
+          = "##{@timesheet.id}"
+          %small= "/ #{@timesheet.status.titleize}"
+    .row
+      .col-md-6
+        = display_field @timesheet.project.name, label: 'Project'
+    .row
+      .col-md-6
+        = display_field @timesheet.division.name, label: 'Division'
+      .col-md-6
+        = display_field @timesheet.employee.name, label: 'Employee'
+    .row
+      .col-md-6
+        = display_field @timesheet.entry_date, label: 'Entry Date'
+      .col-md-6
+        = display_field @timesheet.entry_period, label: 'Entry period'
+    .row
+      .col-md-6
+        = display_field @timesheet.activity, label: 'Activity'
+      .col-md-6
+        = display_field @timesheet.hours, label: 'Hours'
+    .row
+      .col-md-12
+        = display_field @timesheet.notes, label: 'Notes'

@@ -1,0 +1,38 @@
+%h1.page-header
+  Departments
+  %small / Index
+.row
+  .col-md-12
+    .text-right
+      = new_link Department do
+        %button.btn.btn-success{type: "button"} New
+    .table-responsive
+      %table.table.table-striped
+        %thead
+          %tr
+            %th #
+            %th Code
+            %th Name
+            %th Type
+            %th Manager
+            %th.action-cell
+        %tbody
+          - @masters.each do |department|
+            %tr
+              %td= department.id
+              %td= department.code
+              %td= department.name
+              %td= department.kind
+              %td= department.manager_id
+              %td.action-cell
+                = show_link department do
+                  %span.btn-xs.btn-info
+                    %i.fa.fa-search
+                %span.spacer
+                = edit_link department do
+                  %span.btn-xs.btn-primary
+                    %i.fa.fa-pencil
+.row
+  .col-md-12.text-right
+    = paginate @masters
+

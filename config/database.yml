@@ -1,0 +1,26 @@
+development:
+  host: localhost
+  adapter: postgresql
+  encoding: unicode
+  database: sangrah_dev
+  pool: 5
+  username: sangrah
+  password: sangrah
+
+test:
+  host: localhost
+  adapter: postgresql
+  encoding: unicode
+  database: sangrah_test
+  pool: 5
+  username: sangrah
+  password: sangrah
+
+production:
+  host: localhost
+  adapter: postgresql
+  encoding: unicode
+  database: sangrah
+  pool: 5
+  username: sangrah
+  password: sangrah

@@ -1,0 +1,52 @@
+%ul.nav.nav-sidebar
+
+  - if user_can? [:read], [:dashboard]
+    %li{class: active?([:dashboard])}
+      %a{href: application_root_path} Overview
+
+  - if user_can? [:read], [:report]
+    %li{class: active?([:reports])}
+      %a{href: reports_path} Reports
+
+  - if user_can? [:read], [Timesheet]
+    %li{class: active?([:timesheets])}
+      %a{href: timesheets_path} TimeSheet
+
+  - if user_can? [:read], [Pipeline]
+    %li{class: active?([:pipelines])}
+      %a{href: pipelines_path} Pipeline
+
+%ul.nav.nav-sidebar
+
+  - if user_can? [:read], [Client]
+    %li{class: active?([:clients])}
+      %a{href: clients_path} Clients
+
+  - if user_can? [:read], [Division]
+    %li{class: active?([:divisions])}
+      %a{href: divisions_path} Divisions
+
+  - if user_can? [:read], [Project]
+    %li{class: active?([:projects])}
+      %a{href: projects_path} Projects
+
+%ul.nav.nav-sidebar
+
+  - if user_can? [:read], [Department]
+    %li{class: active?([:departments])}
+      %a{href: departments_path} Departments
+
+  - if user_can? [:read], [Employee]
+    %li{class: active?([:employees])}
+      %a{href: employees_path} Employees
+
+- if current_user.has_role? :admin
+  %ul.nav.nav-sidebar
+
+    - if user_can? [:read], [User]
+      %li{class: active?([:users])}
+        %a{href: users_path} Users
+
+    - if user_can? [:read], [:settings]
+      %li{class: active?([:settings])}
+        %a{href: ""} Settings

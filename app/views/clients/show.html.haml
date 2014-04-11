@@ -1,0 +1,25 @@
+%h1.page-header
+  Clients
+  %small / View
+.row
+  .col-md-12
+    .text-right
+      = render 'shared/masters/show_actions'
+
+    .row
+      .col-md-6.text-center.pull-right
+        .image-container
+          = image_tag @master.photo.thumb.url
+      .col-md-6
+        .row
+          .col-md-12
+            = display_field @master.code, label: 'Code'
+        .row
+          .col-md-12
+            = display_field @master.name, label: 'Name'
+        .row
+          .col-md-12
+            = display_field @master.contact, label: 'Contact'
+    .row
+      .col-md-12
+        = display_field @master.notes, label: 'Notes'

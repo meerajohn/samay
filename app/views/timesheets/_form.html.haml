@@ -1,0 +1,42 @@
+= simple_form_for @timesheet, defaults: {input_html: { class: "form-control" }} do |f|
+  .row
+    .col-md-12
+      .text-right
+        = f.button :submit, class: 'btn-primary'
+        = link_to @timesheet do
+          %button.btn.btn-default{type: "button"} Cancel
+
+  = render 'shared/errors/messages', object: f.object
+
+  .form-inputs
+    .row
+      .col-md-6
+        = f.input :project_id,                                 |
+          collection: project_collection([f.object.project]),  |
+          input_html: {class: "form-control custom"}           |
+      .col-md-6
+        = f.association :division, input_html: {class: 'selectize'}
+    .row
+      .col-md-6
+        = f.input :employee_id,                                 |
+          collection: employee_collection([f.object.employee]), |
+          input_html: {class: "form-control custom"}            |
+      .col-md-6
+        = f.input :entry_date, as: :datepick
+    .row
+      .col-md-6
+        = f.input :entry_period
+      .col-md-6
+        = f.input :status
+    .row
+      .col-md-6
+        = f.input :activity
+      .col-md-6
+        = f.input :hours
+    .row
+      .col-md-12
+        = f.input :notes
+  .form-actions
+    = f.button :submit, class: 'btn-primary'
+    = link_to @timesheet do
+      %button.btn.btn-default{type: "button"} Cancel

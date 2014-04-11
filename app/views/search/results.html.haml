@@ -1,0 +1,36 @@
+%h1.page-header
+  Search
+  %small / Results
+  - if @projects.present?
+    %h3 Projects
+    %hr
+    - @projects.each_slice(4) do |row|
+      .row
+        - row.each do |project|
+          .col-md-3
+            %h4= link_to project.name, project
+      %hr
+  - if @clients.present?
+    %h3 Clients
+    %hr
+    - @clients.each_slice(4) do |row|
+      .row
+        - row.each do |client|
+          .col-md-3
+            %h4= link_to client.name, client
+            .row
+              .col-xs-4
+                = image_tag client.photo.select.url
+      %hr
+  - if @employees.present?
+    %h3 Employees
+    - @employees.each_slice(4) do |row|
+      .row
+        -row.each do |employee|
+          .col-md-3
+            %h4= link_to employee.name, employee
+            .row
+              .col-xs-4
+                = image_tag employee.photo.select.url
+      %hr
+

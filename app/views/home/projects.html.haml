@@ -1,0 +1,13 @@
+.container
+  %h1 Projects
+  %hr
+  - @projects.each_slice(4) do |row|
+    .row
+      - row.each do |project|
+        .col-md-3
+          %h3= project.name
+    %hr
+.container
+  .row
+    .col-md-12.text-right
+      = paginate @projects

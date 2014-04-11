@@ -1,0 +1,19 @@
+%h1.page-header
+  Divisions
+  %small / View
+.row
+  .col-md-12
+    .text-right
+      = render 'shared/masters/show_actions'
+
+    .row
+      .col-md-6
+        = display_field @master.parent_id, label: 'Parent Id'
+      .col-md-6
+        = display_field @master.code, label: 'Code'
+    .row
+      .col-md-6
+        = display_field @master.name, label: 'Name'
+    .row
+      .col-md-12
+        = display_field @master.notes, label: 'Notes'

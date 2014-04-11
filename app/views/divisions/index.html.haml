@@ -1,0 +1,35 @@
+%h1.page-header
+  Divisions
+  %small / Index
+.row
+  .col-md-12
+    .text-right
+      = render 'shared/masters/index_actions'
+
+    .table-responsive
+      %table.table.table-striped
+        %thead
+          %tr
+            %th #
+            %th Parent Id
+            %th Code
+            %th Name
+            %th.action-cell
+        %tbody
+          - @masters.each do |division|
+            %tr
+              %td= division.id
+              %td= division.parent_id
+              %td= division.code
+              %td= division.name
+              %td.action-cell
+                = show_link division do
+                  %span.btn-xs.btn-info
+                    %i.fa.fa-search
+                  %span.spacer
+                = edit_link division do
+                  %span.btn-xs.btn-primary
+                    %i.fa.fa-pencil
+.row
+  .col-md-12.text-right
+    = paginate @masters

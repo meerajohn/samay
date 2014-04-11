@@ -1,0 +1,43 @@
+%h1.page-header
+  Employees
+  %small / Index
+.row
+  .col-md-12
+    .text-right
+      = new_link Employee do
+        %button.btn.btn-success{type: "button"} New
+    .table-responsive
+      %table.table.table-striped
+        %thead
+          %tr
+            %th #
+            %th Code
+            %th Name
+            %th Designation
+            %th Department
+            %th Manager
+            %th Join date
+            %th Status
+            %th.action-cell
+        %tbody
+          - @masters.each do |employee|
+            %tr
+              %td= employee.id
+              %td= employee.code
+              %td= employee.name
+              %td= employee.designation
+              %td= employee.department.name
+              %td= employee.manager_id
+              %td= employee.join_date
+              %td= employee.status
+              %td.action-cell
+                = show_link employee do
+                  %span.btn-xs.btn-info
+                    %i.fa.fa-search
+                  %span.spacer
+                = edit_link employee do
+                  %span.btn-xs.btn-primary
+                    %i.fa.fa-pencil
+.row
+  .col-md-12.text-right
+    = paginate @masters
